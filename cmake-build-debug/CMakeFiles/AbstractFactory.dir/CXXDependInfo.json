@@ -1,0 +1,18 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug",
+	"dir-cur-src" : "/home/ericr/CLionProjects/AbstractFactory",
+	"dir-top-bld" : "/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug",
+	"dir-top-src" : "/home/ericr/CLionProjects/AbstractFactory",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : [],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug/CMakeFiles/AbstractFactory.dir"
+}

@@ -1,0 +1,23 @@
+# ninja log v6
+1	57	1733159128508632595	CMakeFiles/AbstractFactory.dir/main.cpp.o.ddi	8925d8565de34eb2
+57	60	1733159128568632651	CMakeFiles/AbstractFactory.dir/CXX.dd	84325108f24aaaa4
+57	60	1733159128568632651	/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug/CMakeFiles/AbstractFactory.dir/CXXModules.json	84325108f24aaaa4
+57	60	1733159128568632651	CMakeFiles/AbstractFactory.dir/main.cpp.o.modmap	84325108f24aaaa4
+1	53	1733159174668674622	CMakeFiles/AbstractFactory.dir/main.cpp.o.ddi	8925d8565de34eb2
+53	55	1733159174718674667	CMakeFiles/AbstractFactory.dir/CXX.dd	84325108f24aaaa4
+53	55	1733159174718674667	/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug/CMakeFiles/AbstractFactory.dir/CXXModules.json	84325108f24aaaa4
+53	55	1733159174718674667	CMakeFiles/AbstractFactory.dir/main.cpp.o.modmap	84325108f24aaaa4
+55	371	1733159174722008003	CMakeFiles/AbstractFactory.dir/main.cpp.o	42d3226a15f42a62
+371	405	1733159175038674949	AbstractFactory	ece560cca4803762
+1	55	1733159194768692182	CMakeFiles/AbstractFactory.dir/main.cpp.o.ddi	8925d8565de34eb2
+55	57	1733159194822025561	CMakeFiles/AbstractFactory.dir/CXX.dd	84325108f24aaaa4
+55	57	1733159194822025561	/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug/CMakeFiles/AbstractFactory.dir/CXXModules.json	84325108f24aaaa4
+55	57	1733159194822025561	CMakeFiles/AbstractFactory.dir/main.cpp.o.modmap	84325108f24aaaa4
+58	367	1733159194825358898	CMakeFiles/AbstractFactory.dir/main.cpp.o	42d3226a15f42a62
+367	402	1733159195135359164	AbstractFactory	ece560cca4803762
+1	53	1733159528619556928	CMakeFiles/AbstractFactory.dir/main.cpp.o.ddi	8925d8565de34eb2
+53	56	1733159528672891901	CMakeFiles/AbstractFactory.dir/CXX.dd	84325108f24aaaa4
+53	56	1733159528672891901	/home/ericr/CLionProjects/AbstractFactory/cmake-build-debug/CMakeFiles/AbstractFactory.dir/CXXModules.json	84325108f24aaaa4
+53	56	1733159528672891901	CMakeFiles/AbstractFactory.dir/main.cpp.o.modmap	84325108f24aaaa4
+56	367	1733159528672891901	CMakeFiles/AbstractFactory.dir/main.cpp.o	42d3226a15f42a62
+367	401	1733159528986234871	AbstractFactory	ece560cca4803762
