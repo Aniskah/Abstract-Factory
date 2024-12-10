@@ -1,11 +1,13 @@
 #include <iostream>
 
+//Die Klasse Stuhl definiert das abstrakte Objekt "Stuhl" und die abstrakte Methode "getName"
 class Stuhl {
 public:
     virtual ~Stuhl(){};
     virtual std::string getName() const = 0;
 };
 
+//Die Klasse AlterStuhl überschreibt die geerbte abstrakten Methode und erbt von Stuhl
 class AlterStuhl : public Stuhl {
     public:
     std::string getName() const override {
@@ -13,19 +15,30 @@ class AlterStuhl : public Stuhl {
     }
 };
 
-class NeuerStuhl : public Stuhl {
+//Die Klasse ModernerStuhl überschreibt die geerbte abstrakten Methode und erbt von Stuhl
+class ModernerStuhl : public Stuhl {
     public:
     std::string getName() const override {
-        return "NeuerStuhl";
+        return "ModernerStuhl";
     }
 };
 
+//Die Klasse AntikerStuhl überschreibt die geerbte abstrakten Methode und erbt von Stuhl
+class AntikerStuhl : public Stuhl {
+    public:
+    std::string getName() const override {
+        return "AntikerStuhl";
+    }
+};
+
+//Die Klasse Tisch definiert das abstrakte Objekt "Tisch" und die abstrakte Methode "getName"
 class Tisch {
     public:
     virtual ~Tisch(){};
     virtual std::string getName() const = 0;
 };
 
+//Die Klasse AlterTisch überschreibt die geerbte abstrakten Methode und erbt von Tisch
 class AlterTisch : public Tisch {
     public:
     std::string getName() const override {
@@ -33,19 +46,30 @@ class AlterTisch : public Tisch {
     }
 };
 
-class NeuerTisch : public Tisch {
+//Die Klasse ModernerTisch überschreibt die geerbte abstrakten Methode und erbt von Tisch
+class ModernerTisch : public Tisch {
     public:
     std::string getName() const override {
-        return "NeuerTisch";
+        return "ModernerTisch";
     }
 };
 
+//Die Klasse AntikerTisch überschreibt die geerbte abstrakten Methode und erbt von Tisch
+class AntikerTisch : public Tisch {
+public:
+    std::string getName() const override {
+        return "AntikerTisch";
+    }
+};
+
+//Die Klasse Bett definiert das abstrakte Objekt "Bett" und die abstrakte Methode "getName"
 class Bett {
     public:
     virtual ~Bett(){};
     virtual std::string getName() const = 0;
 };
 
+//Die Klasse AltesBett überschreibt die geerbte abstrakten Methode und erbt von Bett
 class AltesBett : public Bett {
     public:
     std::string getName() const override {
@@ -53,14 +77,24 @@ class AltesBett : public Bett {
     }
 };
 
-class NeuesBett : public Bett {
+//Die Klasse ModernesBett überschreibt die geerbte abstrakten Methode und erbt von Bett
+class ModernesBett : public Bett {
     public:
     std::string getName() const override {
-        return "NeuesBett";
+        return "ModernesBett";
     }
 };
 
-class
+//Die Klasse AntikesBett überschreibt die geerbte abstrakten Methode und erbt von Bett
+class AntikesBett : public Bett {
+    public:
+    std::string getName() const override {
+        return "AntikerBett";
+    }
+};
+
+//Die klasse AbstractFactory agiert als Interface für den Client um entweder Stuhl-, Tisch- oder Bettobjekte zu erstellen
+//Die Abstrakten Methoden werden dann von den tatsächlichen Fabriken überschrieben
 class AbstractFactory {
     public:
     virtual Stuhl *createStuhl() const = 0;
@@ -68,6 +102,7 @@ class AbstractFactory {
     virtual Bett *createBett() const = 0;
 };
 
+//Die Klasse AlteFactory erbt von AbstractFactory und überschreibt die Methoden um Alte Objekte zu erstellen
 class AlteFactory : public AbstractFactory {
 public:
     Stuhl *createStuhl() const override {
@@ -81,19 +116,35 @@ public:
     }
 };
 
+//Die Klasse NeueFactory erbt von AbstractFactory und überschreibt die Methoden um Neue Objekte zu erstellen
 class NeueFactory : public AbstractFactory {
     public:
     Stuhl *createStuhl() const override {
-        return new NeuerStuhl();
+        return new ModernerStuhl();
     }
     Tisch *createTisch() const override {
-        return new NeuerTisch();
+        return new ModernerTisch();
     }
     Bett *createBett() const override {
-        return new NeuesBett();
+        return new ModernesBett();
     }
 };
 
+//Die Klasse AntikeFactory erbt von AbstractFactory und überschreibt die Methoden um Antike Objekte zu erstellen
+class AntikeFactory : public AbstractFactory {
+    public:
+    Stuhl *createStuhl() const override {
+        return new AntikerStuhl();
+    }
+    Tisch *createTisch() const override {
+        return new AntikerTisch();
+    }
+    Bett *createBett() const override {
+        return new AntikesBett();
+    }
+};
+
+//Der Client übernimmt ein AbstractFactory-Objekt und erstellt die Gefragten Objekte einer Familie
 void Client(const AbstractFactory &factory) {
     const Stuhl *produkt_a = factory.createStuhl();
     const Tisch *produkt_b = factory.createTisch();
@@ -106,6 +157,7 @@ void Client(const AbstractFactory &factory) {
     delete produkt_c;
 }
 
+//Die main-Methode erstellt alle 3 Fabriken und gibt die Namen der Objekte gruppiert aus
 int main() {
     std::cout << "Client: Test für die AlteFactory: " << std::endl;
     AlteFactory *f1 = new AlteFactory();
@@ -116,5 +168,10 @@ int main() {
     NeueFactory *f2 = new NeueFactory();
     Client(*f2);
     delete f2;
+    std::cout << std::endl;
+    std::cout << "Client: Test für die AntikeFactory: " << std::endl;
+    AntikeFactory *f3 = new AntikeFactory();
+    Client (*f3);
+    delete f3;
     return 0;
 }

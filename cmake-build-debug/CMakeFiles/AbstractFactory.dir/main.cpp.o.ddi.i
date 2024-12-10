@@ -43324,10 +43324,17 @@ class AlterStuhl : public Stuhl {
     }
 };
 
-class NeuerStuhl : public Stuhl {
+class ModernerStuhl : public Stuhl {
     public:
     std::string getName() const override {
-        return "NeuerStuhl";
+        return "ModernerStuhl";
+    }
+};
+
+class AntikerStuhl : public Stuhl {
+    public:
+    std::string getName() const override {
+        return "AntikerStuhl";
     }
 };
 
@@ -43344,10 +43351,17 @@ class AlterTisch : public Tisch {
     }
 };
 
-class NeuerTisch : public Tisch {
+class ModernerTisch : public Tisch {
     public:
     std::string getName() const override {
-        return "NeuerTisch";
+        return "ModernerTisch";
+    }
+};
+
+class AntikerTisch : public Tisch {
+public:
+    std::string getName() const override {
+        return "AntikerTisch";
     }
 };
 
@@ -43364,10 +43378,17 @@ class AltesBett : public Bett {
     }
 };
 
-class NeuesBett : public Bett {
+class ModernesBett : public Bett {
     public:
     std::string getName() const override {
-        return "NeuesBett";
+        return "ModernesBett";
+    }
+};
+
+class AntikesBett : public Bett {
+    public:
+    std::string getName() const override {
+        return "AntikerBett";
     }
 };
 
@@ -43394,13 +43415,26 @@ public:
 class NeueFactory : public AbstractFactory {
     public:
     Stuhl *createStuhl() const override {
-        return new NeuerStuhl();
+        return new ModernerStuhl();
     }
     Tisch *createTisch() const override {
-        return new NeuerTisch();
+        return new ModernerTisch();
     }
     Bett *createBett() const override {
-        return new NeuesBett();
+        return new ModernesBett();
+    }
+};
+
+class AntikeFactory : public AbstractFactory {
+    public:
+    Stuhl *createStuhl() const override {
+        return new AntikerStuhl();
+    }
+    Tisch *createTisch() const override {
+        return new AntikerTisch();
+    }
+    Bett *createBett() const override {
+        return new AntikesBett();
     }
 };
 
@@ -43426,5 +43460,10 @@ int main() {
     NeueFactory *f2 = new NeueFactory();
     Client(*f2);
     delete f2;
+    std::cout << std::endl;
+    std::cout << "Client: Test für die AntikeFactory: " << std::endl;
+    AntikeFactory *f3 = new AntikeFactory();
+    Client (*f3);
+    delete f3;
     return 0;
 }
