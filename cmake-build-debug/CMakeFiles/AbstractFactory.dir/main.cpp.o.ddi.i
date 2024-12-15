@@ -5,6 +5,7 @@
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
 # 1 "/home/ericr/CLionProjects/AbstractFactory/main.cpp"
+# 9 "/home/ericr/CLionProjects/AbstractFactory/main.cpp"
 # 1 "/usr/include/c++/14.2.1/iostream" 1 3
 # 36 "/usr/include/c++/14.2.1/iostream" 3
        
@@ -43307,15 +43308,17 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 }
-# 2 "/home/ericr/CLionProjects/AbstractFactory/main.cpp" 2
+# 10 "/home/ericr/CLionProjects/AbstractFactory/main.cpp" 2
 
 
-# 3 "/home/ericr/CLionProjects/AbstractFactory/main.cpp"
+
+# 12 "/home/ericr/CLionProjects/AbstractFactory/main.cpp"
 class Stuhl {
 public:
     virtual ~Stuhl(){};
     virtual std::string getName() const = 0;
 };
+
 
 class AlterStuhl : public Stuhl {
     public:
@@ -43324,12 +43327,14 @@ class AlterStuhl : public Stuhl {
     }
 };
 
+
 class ModernerStuhl : public Stuhl {
     public:
     std::string getName() const override {
         return "ModernerStuhl";
     }
 };
+
 
 class AntikerStuhl : public Stuhl {
     public:
@@ -43338,11 +43343,13 @@ class AntikerStuhl : public Stuhl {
     }
 };
 
+
 class Tisch {
     public:
     virtual ~Tisch(){};
     virtual std::string getName() const = 0;
 };
+
 
 class AlterTisch : public Tisch {
     public:
@@ -43351,12 +43358,14 @@ class AlterTisch : public Tisch {
     }
 };
 
+
 class ModernerTisch : public Tisch {
     public:
     std::string getName() const override {
         return "ModernerTisch";
     }
 };
+
 
 class AntikerTisch : public Tisch {
 public:
@@ -43365,11 +43374,13 @@ public:
     }
 };
 
+
 class Bett {
     public:
     virtual ~Bett(){};
     virtual std::string getName() const = 0;
 };
+
 
 class AltesBett : public Bett {
     public:
@@ -43378,12 +43389,14 @@ class AltesBett : public Bett {
     }
 };
 
+
 class ModernesBett : public Bett {
     public:
     std::string getName() const override {
         return "ModernesBett";
     }
 };
+
 
 class AntikesBett : public Bett {
     public:
@@ -43392,6 +43405,8 @@ class AntikesBett : public Bett {
     }
 };
 
+
+
 class AbstractFactory {
     public:
     virtual Stuhl *createStuhl() const = 0;
@@ -43399,7 +43414,9 @@ class AbstractFactory {
     virtual Bett *createBett() const = 0;
 };
 
+
 class AlteFactory : public AbstractFactory {
+
 public:
     Stuhl *createStuhl() const override {
         return new AlterStuhl();
@@ -43412,7 +43429,9 @@ public:
     }
 };
 
-class NeueFactory : public AbstractFactory {
+
+class ModerneFactory : public AbstractFactory {
+
     public:
     Stuhl *createStuhl() const override {
         return new ModernerStuhl();
@@ -43425,8 +43444,10 @@ class NeueFactory : public AbstractFactory {
     }
 };
 
+
 class AntikeFactory : public AbstractFactory {
     public:
+
     Stuhl *createStuhl() const override {
         return new AntikerStuhl();
     }
@@ -43438,32 +43459,100 @@ class AntikeFactory : public AbstractFactory {
     }
 };
 
+
 void Client(const AbstractFactory &factory) {
+
     const Stuhl *produkt_a = factory.createStuhl();
     const Tisch *produkt_b = factory.createTisch();
     const Bett *produkt_c = factory.createBett();
+
     std::cout << produkt_a->getName() << std::endl;
     std::cout << produkt_b->getName() << std::endl;
     std::cout << produkt_c->getName() << std::endl;
+
     delete produkt_a;
     delete produkt_b;
     delete produkt_c;
 }
 
+
 int main() {
-    std::cout << "Client: Test für die AlteFactory: " << std::endl;
+
+    std::cout << "Client: Test für die AlteFactory: ";
+    std::cout << std::endl;
+
     AlteFactory *f1 = new AlteFactory();
+
     Client (*f1);
+
     delete f1;
     std::cout << std::endl;
-    std::cout << "Client: Test für die NeueFactory: " << std::endl;
-    NeueFactory *f2 = new NeueFactory();
-    Client(*f2);
-    delete f2;
+
+    std::cout << "Client: Test für die ModerneFactory";
     std::cout << std::endl;
-    std::cout << "Client: Test für die AntikeFactory: " << std::endl;
+
+    ModerneFactory *f2 = new ModerneFactory();
+
+    Client(*f2);
+
+    delete f2;
+
+    std::cout << std::endl;
+    std::cout << "Client: Test für die AntikeFactory: ";
+    std::cout << std::endl;
+
     AntikeFactory *f3 = new AntikeFactory();
+
     Client (*f3);
+
     delete f3;
+
+    std::string input;
+
+    std::cout << std::endl;
+    std::cout << "Bitte zwischen den verfügbaren Möbelsets auswählen:";
+    std::cout << std::endl;
+    std::cout << "Antik";
+    std::cout << std::endl;
+    std::cout << "Alt";
+    std::cout << std::endl;
+    std::cout << "Modern";
+    std::cout << std::endl;
+
+    std::getline(std::cin, input);
+    std::cout << std::endl;
+
+
+    if (input == "Antik"){
+        std::cout << "Zur Gruppe \"Antik\" gehören diese Möbelstücke:";
+        std::cout << std::endl;
+        AntikeFactory *f4 = new AntikeFactory();
+        Client (*f4);
+        delete f4;
+    }
+    else {
+        if (input == "Alt") {
+            std::cout << "Zur Gruppe \"Alt\" gehören diese Möbelstücke:";
+            std::cout << std::endl;
+            AlteFactory *f5 = new AlteFactory();
+            Client (*f5);
+            delete f5;
+        }
+        else {
+            if (input == "Modern") {
+                std::cout << "Zur Gruppe \"Modern\" gehören diese Möbelstücke:";
+                std::cout << std::endl;
+                ModerneFactory *f6 = new ModerneFactory();
+                Client (*f6);
+                delete f6;
+            }
+            else {
+
+
+                std::cout << input << " ist keine Auswahlmöglichkeit!" << std::endl;
+            }
+        }
+    }
+
     return 0;
 }
